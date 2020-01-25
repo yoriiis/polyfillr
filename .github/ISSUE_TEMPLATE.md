@@ -30,9 +30,9 @@ Please include any additional information necessary here. Including the followin
 
 ### versions
 
-#### npmPackageBoilerplate
+#### polyfill-loader
 
-What version of `npmPackageBoilerplate` does this occur with?
+What version of `polyfill-loader` does this occur with?
 
 #### Browsers
 

@@ -1,13 +1,41 @@
 /**
  * @license MIT
- * @name npmPackageBoilerplate
+ * @name polyfill-loader
  * @version 1.0.0
  * @author: Yoriiis aka Joris DANIEL <joris.daniel@gmail.com>
  * @description: Boilerplate to kickstart creating a npm package
- * {@link https://github.com/yoriiis/npm-package-boilerplate}
+ * {@link https://github.com/yoriiis/polyfill-loader}
  * @copyright 2020 Joris DANIEL
  **/
 
-module.exports = () => {
-	return 'NPM package boilerplate';
+const Promise = require('promise-polyfill');
+
+// Load Promise polyfill if necessary
+if (!window.Promise) {
+	window.Promise = Promise;
+}
+
+/**
+ * Function inspire by Anuj Nair
+ * https://anujnair.com/blog/13-conditionally-load-multiple-polyfills-using-webpack-promises-and-code-splitting
+ *
+ * @param {Array} polyfills List of polyfills
+ * @param {String} callback Function executed when all polyfills are loaded
+ */
+module.exports = function polyfillLoader ({ polyfills, callback }) {
+	if (polyfills.some(polyfill => polyfill.test)) {
+		const polyfillFns = [];
+
+		// Loop on all polyfills to test
+		polyfills.forEach(polyfill => {
+			if (polyfill.test) {
+				polyfillFns.push(polyfill.load);
+			}
+		});
+
+		// Promise all polyfills and executes the callback
+		Promise.all(polyfillFns).then(() => callback());
+	} else {
+		callback();
+	}
 };
