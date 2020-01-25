@@ -3,7 +3,7 @@
  * @name polyfill-loader
  * @version 1.0.0
  * @author: Yoriiis aka Joris DANIEL <joris.daniel@gmail.com>
- * @description: Boilerplate to kickstart creating a npm package
+ * @description: Polyfill loader dynamically load polyfills with dynamic import before start your application
  * {@link https://github.com/yoriiis/polyfill-loader}
  * @copyright 2020 Joris DANIEL
  **/
