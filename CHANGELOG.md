@@ -4,4 +4,4 @@
 
 ### New features
 
-* First release of `polyfill-loader` 🚀
+* First release of `polyfillr` 🚀
