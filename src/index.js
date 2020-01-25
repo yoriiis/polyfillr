@@ -22,7 +22,7 @@ if (!window.Promise) {
  * @param {Array} polyfills List of polyfills
  * @param {String} callback Function executed when all polyfills are loaded
  */
-module.exports = function polyfillLoader ({ polyfills, callback }) {
+module.exports = function polyfillLoader ({ polyfills, callback = () => {} }) {
 	if (polyfills.some(polyfill => polyfill.test)) {
 		const polyfillFns = [];
 
