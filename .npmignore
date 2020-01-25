@@ -1,6 +1,5 @@
 .github/
 .vscode/
-coverage
 .editorconfig
 .eslintignore
 .eslintrc.js

@@ -24,7 +24,6 @@ install:
 script:
   - npm run test:markdown
   - npm run test:eslint
-  - npm run test
 
 jobs:
   include:
@@ -33,6 +32,3 @@ jobs:
       script:
         - npm run test:markdown
         - npm run test:eslint
-        - npm run test
-    - after_success:
-        - npm run coverage
