@@ -1,7 +1,7 @@
 {
 	"name": "polyfill-loader",
 	"version": "1.0.0",
-	"description": "Boilerplate to kickstart creating a npm package",
+	"description": "Polyfill loader dynamically load polyfills with dynamic import before start your application",
 	"keywords": [
 		"polyfill-loader",
 		"polyfill",
