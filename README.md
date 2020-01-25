@@ -1,24 +1,24 @@
-# Polyfill Loader
+# Polyfillr
 
-![Polyfill Loader](https://img.shields.io/badge/polyfill--loader-v1.0.0-546e7a.svg?style=for-the-badge) [![TravisCI](https://img.shields.io/travis/com/yoriiis/polyfill-loader/master?style=for-the-badge)](https://travis-ci.com/yoriiis/polyfill-loader) ![Node.js](https://img.shields.io/node/v/polyfill-loader?style=for-the-badge) [![Bundlephobia](https://img.shields.io/bundlephobia/minzip/polyfill-loader?style=for-the-badge)](https://bundlephobia.com/result?p=polyfill-loader@latest)
+![Polyfillr](https://img.shields.io/badge/polyfillr-v1.0.0-546e7a.svg?style=for-the-badge) [![TravisCI](https://img.shields.io/travis/com/yoriiis/polyfillr/master?style=for-the-badge)](https://travis-ci.com/yoriiis/polyfillr) ![Node.js](https://img.shields.io/node/v/polyfillr?style=for-the-badge) [![Bundlephobia](https://img.shields.io/bundlephobia/minzip/polyfillr?style=for-the-badge)](https://bundlephobia.com/result?p=polyfillr@latest)
 
-`polyfill-loader` is a minimalist function to dynamically load polyfills before start your application. The function is inspired by [Anuj Nair](https://github.com/AnujRNair/) about the [conditionally load of multiple Polyfills using Webpack](https://anujnair.com/blog/13-conditionally-load-multiple-polyfills-using-webpack-promises-and-code-splitting)
+`polyfillr` is a minimalist function to dynamically load polyfills before start your application. The function is inspired by [Anuj Nair](https://github.com/AnujRNair/) about the [conditionally load of multiple Polyfills using Webpack](https://anujnair.com/blog/13-conditionally-load-multiple-polyfills-using-webpack-promises-and-code-splitting)
 
 ## Installation
 
-The plugin is available as the `polyfill-loader` package name on [npm](https://www.npmjs.com/package/polyfill-loader) and [Github](https://github.com/yoriiis/polyfill-loader).
+The plugin is available as the `polyfillr` package name on [npm](https://www.npmjs.com/package/polyfillr) and [Github](https://github.com/yoriiis/polyfillr).
 
 ```bash
-npm i --save-dev polyfill-loader
+npm i --save-dev polyfillr
 ```
 
 ```bash
-yarn add --dev polyfill-loader
+yarn add --dev polyfillr
 ```
 
 ## Environment
 
-`polyfill-loader` was built for Node.js `>=8.11.2`.
+`polyfillr` was built for Node.js `>=8.11.2`.
 
 ## Usage
 
@@ -27,9 +27,9 @@ yarn add --dev polyfill-loader
 The following example load `Array.from` polyfill from `core-js` node modules with dynamic import.
 
 ```javascript
-const polyfillLoader = require('polyfill-loader');
+const polyfillr = require('polyfillr');
 
-polyfillLoader({
+polyfillr({
     polyfills: [
         {
             name: 'Array.from',
@@ -45,9 +45,9 @@ polyfillLoader({
 The following example load `Array.from` polyfill from `core-js` node modules with dynamic import and executed the callback function.
 
 ```javascript
-const polyfillLoader = require('polyfill-loader');
+const polyfillr = require('polyfillr');
 
-polyfillLoader({
+polyfillr({
     polyfills: [
         {
             name: 'Array.from',
@@ -68,9 +68,9 @@ The following example load `Array.from` polyfill from `core-js` node modules wit
 More information about [Webpack magic comments](https://webpack.js.org/api/module-methods/#magic-comments).
 
 ```javascript
-const polyfillLoader = require('polyfill-loader');
+const polyfillr = require('polyfillr');
 
-polyfillLoader({
+polyfillr({
     polyfills: [
         {
             name: 'Array.from',
@@ -86,9 +86,9 @@ polyfillLoader({
 The following example load `HTMLPictureElement` polyfill from `./polyfills` project directory with dynamic import.
 
 ```javascript
-const polyfillLoader = require('polyfill-loader');
+const polyfillr = require('polyfillr');
 
-polyfillLoader({
+polyfillr({
     polyfills: [
         {
             name: 'HTMLPictureElement',
@@ -104,9 +104,9 @@ polyfillLoader({
 The following example load `HTMLPictureElement` polyfill from `./polyfills` project directory and `Array.from` polyfill from `core-js` node modules with dynamic import.
 
 ```javascript
-const polyfillLoader = require('polyfill-loader');
+const polyfillr = require('polyfillr');
 
-polyfillLoader({
+polyfillr({
     polyfills: [
         {
             name: 'HTMLPictureElement',
@@ -156,6 +156,6 @@ Tells the optional function to execute when all polyfills are loaded.
 
 ## Licence
 
-`polyfill-loader` is licensed under the [MIT License](http://opensource.org/licenses/MIT).
+`polyfillr` is licensed under the [MIT License](http://opensource.org/licenses/MIT).
 
 Created with ♥ by [@yoriiis](http://github.com/yoriiis).

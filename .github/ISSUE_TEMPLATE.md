@@ -30,9 +30,9 @@ Please include any additional information necessary here. Including the followin
 
 ### versions
 
-#### polyfill-loader
+#### polyfillr
 
-What version of `polyfill-loader` does this occur with?
+What version of `polyfillr` does this occur with?
 
 #### Browsers
 

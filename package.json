@@ -1,15 +1,15 @@
 {
-	"name": "polyfill-loader",
+	"name": "polyfillr",
 	"version": "1.0.0",
-	"description": "Polyfill loader dynamically load polyfills with dynamic import before start your application",
+	"description": "Polyfillr dynamically load polyfills with dynamic import before start your application",
 	"keywords": [
 		"polyfill-loader",
 		"polyfill",
-		"dynamic import"
+		"dynamic-import"
 	],
-	"homepage": "https://github.com/yoriiis/polyfill-loader",
-	"bugs": "https://github.com/yoriiis/polyfill-loader/issues",
-	"repository": "https://github.com/yoriiis/polyfill-loader.git",
+	"homepage": "https://github.com/yoriiis/polyfillr",
+	"bugs": "https://github.com/yoriiis/polyfillr/issues",
+	"repository": "https://github.com/yoriiis/polyfillr.git",
 	"license": "MIT",
 	"author": "Yoriiis aka Joris DANIEL",
 	"main": "src/index.js",
