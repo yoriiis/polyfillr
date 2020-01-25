@@ -1,6 +1,6 @@
 # Polyfill Loader
 
-![Polyfill Loader](https://img.shields.io/badge/polyfill--loader-v1.0.0-546e7a.svg?style=for-the-badge) [![TravisCI](https://img.shields.io/travis/com/yoriiis/polyfill-loader/master?style=for-the-badge)](https://travis-ci.com/yoriiis/polyfill-loader) [![Coverage Status](https://img.shields.io/coveralls/github/yoriiis/polyfill-loader?style=for-the-badge)](https://coveralls.io/github/yoriiis/polyfill-loader?branch=master) ![Node.js](https://img.shields.io/node/v/polyfill-loader?style=for-the-badge) [![Bundlephobia](https://img.shields.io/bundlephobia/minzip/polyfill-loader?style=for-the-badge)](https://bundlephobia.com/result?p=polyfill-loader@latest)
+![Polyfill Loader](https://img.shields.io/badge/polyfill--loader-v1.0.0-546e7a.svg?style=for-the-badge) [![TravisCI](https://img.shields.io/travis/com/yoriiis/polyfill-loader/master?style=for-the-badge)](https://travis-ci.com/yoriiis/polyfill-loader) ![Node.js](https://img.shields.io/node/v/polyfill-loader?style=for-the-badge) [![Bundlephobia](https://img.shields.io/bundlephobia/minzip/polyfill-loader?style=for-the-badge)](https://bundlephobia.com/result?p=polyfill-loader@latest)
 
 `polyfill-loader` is a minimalist function to dynamically load polyfills before start your application. The function is inspired by [Anuj Nair](https://github.com/AnujRNair/) about the [conditionally load of multiple Polyfills using Webpack](https://anujnair.com/blog/13-conditionally-load-multiple-polyfills-using-webpack-promises-and-code-splitting)
 
@@ -36,6 +36,24 @@ polyfillLoader({
             test: typeof Array.from !== 'function',
             load: import('core-js/es/array/from')
         }
+    ]
+});
+```
+
+### Callback function when polyfills loaded
+
+The following example load `Array.from` polyfill from `core-js` node modules with dynamic import and executed the callback function.
+
+```javascript
+const polyfillLoader = require('polyfill-loader');
+
+polyfillLoader({
+    polyfills: [
+        {
+            name: 'Array.from',
+            test: typeof Array.from !== 'function',
+            load: import('core-js/es/array/from')
+        }
     ],
     callback: () => {
         console.log('Polyfill loaded');
@@ -59,16 +77,13 @@ polyfillLoader({
             test: typeof Array.from !== 'function',
             load: import(/* webpackChunkName: "polyfill.array-from" */ 'core-js/es/array/from')
         }
-    ],
-    callback: () => {
-        console.log('Polyfill loaded');
-    }
+    ]
 });
 ```
 
 ### Load polyfill from local file
 
-The following example load `picture` polyfill from `./polyfills` project directory with dynamic import.
+The following example load `HTMLPictureElement` polyfill from `./polyfills` project directory with dynamic import.
 
 ```javascript
 const polyfillLoader = require('polyfill-loader');
@@ -78,12 +93,9 @@ polyfillLoader({
         {
             name: 'HTMLPictureElement',
             test: typeof window.HTMLPictureElement !== 'function',
-            load: import('./polyfills/picturefill.min')
+            load: import('./polyfills/picturefill.min.js')
         }
-    ],
-    callback: () => {
-        console.log('Polyfill loaded');
-    }
+    ]
 });
 ```
 
@@ -99,17 +111,14 @@ polyfillLoader({
         {
             name: 'HTMLPictureElement',
             test: typeof window.HTMLPictureElement !== 'function',
-            load: import('./polyfills/picturefill.min')
+            load: import('./polyfills/picturefill.min.js')
         },
         {
             name: 'Array.from',
             test: typeof Array.from !== 'function',
             load: import('core-js/es/array/from')
         }
-    ],
-    callback: () => {
-        console.log('Polyfill loaded');
-    }
+    ]
 });
 ```
 
@@ -119,7 +128,7 @@ polyfillLoader({
 
 `Array`
 
-Tells to the function the list of polyfills. The `polyfills` array accept configurations of polyfills with an object with three parameters:
+Tells to the function the list of polyfills to load. The `polyfills` array accept configurations of polyfills with an object with three parameters:
 
 #### `name`
 
@@ -141,9 +150,9 @@ Dynamic import of the polyfill file.
 
 ### `callback`
 
-`Function`
+`Function = () => {}`
 
-Tells the function to execute when all polyfills are loaded.
+Tells the optional function to execute when all polyfills are loaded.
 
 ## Licence
 
