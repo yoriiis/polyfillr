@@ -24,6 +24,7 @@ install:
 script:
   - npm run test:markdown
   - npm run test:eslint
+  - npm run build:example
 
 jobs:
   include:
@@ -32,3 +33,4 @@ jobs:
       script:
         - npm run test:markdown
         - npm run test:eslint
+        - npm run build:example
