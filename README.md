@@ -1,6 +1,6 @@
 # Polyfillr
 
-![Polyfillr](https://img.shields.io/badge/polyfillr-v1.0.0-546e7a.svg?style=for-the-badge) [![TravisCI](https://img.shields.io/travis/com/yoriiis/polyfillr/master?style=for-the-badge)](https://travis-ci.com/yoriiis/polyfillr) ![Node.js](https://img.shields.io/node/v/polyfillr?style=for-the-badge) [![Bundlephobia](https://img.shields.io/bundlephobia/minzip/polyfillr?style=for-the-badge)](https://bundlephobia.com/result?p=polyfillr@latest)
+![Polyfillr](https://img.shields.io/badge/polyfillr-v2.0.0-546e7a.svg?style=for-the-badge) [![TravisCI](https://img.shields.io/travis/com/yoriiis/polyfillr/master?style=for-the-badge)](https://travis-ci.com/yoriiis/polyfillr) ![Node.js](https://img.shields.io/node/v/polyfillr?style=for-the-badge) [![Bundlephobia](https://img.shields.io/bundlephobia/minzip/polyfillr?style=for-the-badge)](https://bundlephobia.com/result?p=polyfillr@latest)
 
 `polyfillr` is a minimalist function to dynamically load polyfills before start your application. The function is inspired by [Anuj Nair](https://github.com/AnujRNair/) about the [conditionally load of multiple Polyfills using Webpack](https://anujnair.com/blog/13-conditionally-load-multiple-polyfills-using-webpack-promises-and-code-splitting)
 
@@ -22,6 +22,8 @@ yarn add --dev polyfillr
 
 ## Usage
 
+Webpack need `__webpack_public_path__` variable to find the path to dynamically load files. More information in the [Webpack documentation](https://webpack.js.org/guides/public-path/#on-the-fly).
+
 ### Load polyfill from node modules
 
 The following example load `Array.from` polyfill from `core-js` node modules with dynamic import.
@@ -34,7 +36,9 @@ polyfillr({
         {
             name: 'Array.from',
             test: typeof Array.from !== 'function',
-            load: import('core-js/es/array/from')
+            load: () => {
+                return import('core-js/es/array/from')
+            }
         }
     ]
 });
@@ -52,7 +56,9 @@ polyfillr({
         {
             name: 'Array.from',
             test: typeof Array.from !== 'function',
-            load: import('core-js/es/array/from')
+            load: () => {
+                return import('core-js/es/array/from');
+            }
         }
     ],
     callback: () => {
@@ -75,7 +81,9 @@ polyfillr({
         {
             name: 'Array.from',
             test: typeof Array.from !== 'function',
-            load: import(/* webpackChunkName: "polyfill.array-from" */ 'core-js/es/array/from')
+            load: () => {
+                return import(/* webpackChunkName: "polyfill.array-from" */ 'core-js/es/array/from');
+            }
         }
     ]
 });
@@ -93,7 +101,9 @@ polyfillr({
         {
             name: 'HTMLPictureElement',
             test: typeof window.HTMLPictureElement !== 'function',
-            load: import('./polyfills/picturefill.min.js')
+            load: () => {
+                return import('./polyfills/picturefill.min.js');
+            }
         }
     ]
 });
@@ -111,14 +121,39 @@ polyfillr({
         {
             name: 'HTMLPictureElement',
             test: typeof window.HTMLPictureElement !== 'function',
-            load: import('./polyfills/picturefill.min.js')
+            load: () => {
+                return import('./polyfills/picturefill.min.js');
+            }
         },
         {
             name: 'Array.from',
             test: typeof Array.from !== 'function',
-            load: import('core-js/es/array/from')
+            load: () => {
+                return import('core-js/es/array/from');
+            }
         }
     ]
+});
+```
+
+### Debug mode
+
+The following example load `Array.from` polyfill from `core-js` node modules with dynamic import and enables debug log in the browser devtools.
+
+```javascript
+const polyfillr = require('polyfillr');
+
+polyfillr({
+    polyfills: [
+        {
+            name: 'Array.from',
+            test: typeof Array.from !== 'function',
+            load: () => {
+                return import('core-js/es/array/from');
+            }
+        }
+    ],
+    debug: true
 });
 ```
 
@@ -144,15 +179,21 @@ The test to see if we need to download the polyfill to the browser.
 
 #### `load`
 
-`string`
+`Function`
 
-Dynamic import of the polyfill file.
+The function to executes to dynamically import the polyfill file.
 
 ### `callback`
 
 `Function = () => {}`
 
 Tells the optional function to execute when all polyfills are loaded.
+
+### `debug`
+
+`Boolean = false`
+
+Tells to the function to enable the debug mode. Log messages will be displayed in the browser devtools for every polyfill files load.
 
 ## Licence
 

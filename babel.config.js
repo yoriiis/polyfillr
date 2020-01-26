@@ -10,7 +10,7 @@ module.exports = function (api) {
 		]
 	];
 
-	const plugins = [];
+	const plugins = ['@babel/plugin-syntax-dynamic-import'];
 
 	api.cache.using(() => process.env.NODE_ENV);
 
