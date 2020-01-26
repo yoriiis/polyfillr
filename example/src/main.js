@@ -2,7 +2,7 @@ import polyfillr from '../../src/index';
 
 // Set Webpack public path to dynamically load module
 // https://webpack.js.org/guides/public-path/#on-the-fly
-__webpack_public_path__ = `${window.location.protocol}//${window.location.host}${window.location.pathname}dist/`;
+__webpack_public_path__ = `${window.location.protocol}//${window.location.host}${window.location.pathname}dist/`; // eslint-disable-line camelcase
 
 polyfillr({
 	polyfills: [

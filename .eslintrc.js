@@ -22,11 +22,12 @@ module.exports = {
 		indent: ['error', 'tab', { ignoredNodes: ['TemplateLiteral > *'] }],
 		'no-tabs': 0,
 		'no-console': 0,
-		'semi': [1, 'always']
+		semi: [1, 'always']
 	},
 
 	globals: {
 		document: false,
-		window: false
+		window: false,
+		__webpack_public_path__: true
 	}
-}
+};
