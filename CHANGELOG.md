@@ -9,6 +9,7 @@
 ### Updates
 
 * Replace type of `load` parameter by a function
+* Update dependencies
 
 ### New features
 
