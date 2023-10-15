@@ -11,7 +11,7 @@
 	"bugs": "https://github.com/yoriiis/polyfillr/issues",
 	"repository": "https://github.com/yoriiis/polyfillr.git",
 	"license": "MIT",
-	"author": "Yoriiis aka Joris DANIEL",
+	"author": "Yoriiis",
 	"main": "src/index.js",
 	"scripts": {
 		"build:example": "rm -rf ./example/dist/ && webpack --config=./example/webpack.config.js --mode=production",
