@@ -5,7 +5,7 @@
  * @author: Yoriiis
  * @description: Polyfillr dynamically load polyfills with dynamic import before start your application
  * {@link https://github.com/yoriiis/polyfillr}
- * @copyright 2020 Joris DANIEL
+ * @copyright 2020 Yoriiis
  **/
 
 const Promise = require('promise-polyfill');
