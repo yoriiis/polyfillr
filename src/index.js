@@ -2,7 +2,7 @@
  * @license MIT
  * @name polyfillr
  * @version 2.0.0
- * @author: Yoriiis aka Joris DANIEL <joris.daniel@gmail.com>
+ * @author: Yoriiis
  * @description: Polyfillr dynamically load polyfills with dynamic import before start your application
  * {@link https://github.com/yoriiis/polyfillr}
  * @copyright 2020 Joris DANIEL
